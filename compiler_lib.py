@@ -112,3 +112,8 @@ def argumentExists(argument,args):
         return False
     else:
         return True
+
+def getInnerText(element):
+    elementString = element["selfString"]
+    elementString = elementString[elementString.find(">") + 1:elementString.find("<") - (len(element["tag"]) + 3)]
+    return elementString

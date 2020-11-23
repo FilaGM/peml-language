@@ -28,6 +28,12 @@ for i in command:
         if(argumentExists("width",args)):
             width = getArgument("width", args)["content"]
         compiled.write(i.element["tag"] + " = tk.Frame("+i.parrent["tag"]+",width=\""+width+"\",height=\""+height+"\")\n")
+    if(found == False):
+        compiled.write(getArgument("name", args)["content"] + " = tk.Label(" + i.parrent["tag"] + ",text=\"" + getInnerText(i.element) + "\")\n")
+        if(argumentExists("x", args) and argumentExists("y", args)):
+            compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n")
+        else:
+            compiled.write(getArgument("name", args)["content"] + ".pack()\n")
 
     if(found == True and i.element["tag"] == "form"):
         i.element["tag"] = getArgument("name",args)["content"]
@@ -41,8 +47,8 @@ for i in command:
             compiled.write(i.element["tag"] + ".title(\""+i.element["tag"]+"\")\n")
         formTags.append(i.element["tag"])
 
-compiled.write("#<looping form>\n")
+compiled.write("#<looping forms>\n")
 for i in formTags:
     compiled.write(i + ".mainloop()\n")
 
-compiled.write("#namespace end")
+compiled.write("#formspace end")
