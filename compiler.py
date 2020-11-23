@@ -13,7 +13,7 @@ compiled = open("index.py","w")
 compiled.write("import tkinter as tk\n")
 for arg in compiledFile["args"]:
     if(getArgumentFromString(arg)["name"] == "name"):
-        compiled.write("#namespace "+getArgumentFromString(arg)["content"] + "\n")
+        compiled.write("#formspace "+getArgumentFromString(arg)["content"] + "\n")
 
 formTags = []
 for i in command:
@@ -33,11 +33,12 @@ for i in command:
         i.element["tag"] = getArgument("name",args)["content"]
         compiled.write("#==formspace " + i.element["tag"] + "==\n")
         compiled.write(i.element["tag"] + " = tk.Tk()\n")
-        compiled.write(i.element["tag"] + ".geometry(\"" + getArgument("dimensions",args)["content"] + "\")\n")
+        if(argumentExists("dimensions",args)):
+            compiled.write(i.element["tag"] + ".geometry(\"" + getArgument("dimensions",args)["content"] + "\")\n")
         if(argumentExists("title",args)):
-            compiled.write(i.element["tag"] + ".title(\""+getArgument("title",args)["content"]+"\")")
+            compiled.write(i.element["tag"] + ".title(\""+getArgument("title",args)["content"]+"\")\n")
         else:
-            compiled.write(i.element["tag"] + ".title(\""+i.element["tag"]+"\")")
+            compiled.write(i.element["tag"] + ".title(\""+i.element["tag"]+"\")\n")
         formTags.append(i.element["tag"])
 
 compiled.write("#<looping form>\n")

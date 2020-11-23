@@ -1,8 +1,5 @@
-<namespace,name="project">
+<formspace,name="project">
   <form,name="window1",dimensions="500x500",title="hello">
     <a></a>
   </form>
-  <form,name="window2",dimensions="500x500">
-    <a></a>
-  </form>
-</namespace>
+</formspace>
