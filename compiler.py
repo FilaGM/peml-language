@@ -1,6 +1,7 @@
 import sys
 from compiler_lib import *
 import tkinter as tk
+import os
 file = open(sys.argv[1],"r")
 
 file = file.read()
@@ -29,11 +30,19 @@ for i in command:
             width = getArgument("width", args)["content"]
         compiled.write(i.element["tag"] + " = tk.Frame("+i.parrent["tag"]+",width=\""+width+"\",height=\""+height+"\")\n")
     if(found == False):
-        compiled.write(getArgument("name", args)["content"] + " = tk.Label(" + i.parrent["tag"] + ",text=\"" + getInnerText(i.element) + "\")\n")
-        if(argumentExists("x", args) and argumentExists("y", args)):
-            compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n")
+        if(i.element["tag"] == "script"):
+            compiled.write("#~script " + getArgument("name", args)["content"] + "~ START\n")
+            if(argumentExists("path", args)):
+                selfDir = os.getcwd()
+                if(os.path.exists(getArgument("path", args)["content"])):
+                    compiled.write(open(getArgument("path", args)["content"],"r").read())
+            compiled.write("#~script " + getArgument("name", args)["content"] + "~ END\n")
         else:
-            compiled.write(getArgument("name", args)["content"] + ".pack()\n")
+            compiled.write(getArgument("name", args)["content"] + " = tk.Label(" + i.parrent["tag"] + ",text=\"" + getInnerText(i.element) + "\")\n")
+            if(argumentExists("x", args) and argumentExists("y", args)):
+                compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n")
+            else:
+                compiled.write(getArgument("name", args)["content"] + ".pack()\n")
 
     if(found == True and i.element["tag"] == "form"):
         i.element["tag"] = getArgument("name",args)["content"]
