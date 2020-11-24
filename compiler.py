@@ -23,6 +23,8 @@ for i in command:
     for a in command:
         if(i.element["tag"] == a.parrent["tag"]):
             found = True
+
+    print(i.parrent["tag"]," -> ",i.element["tag"],"|",found)
     if(found == True and i.element["tag"] != "form"):
         width = "100"
         height = "100"
@@ -35,7 +37,7 @@ for i in command:
             compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
         else:
             compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
-    if(found == False):
+    elif(found == False):
         #script
         if(i.element["tag"] == "script"):
             if(argumentExists("path", args)):
@@ -64,7 +66,7 @@ for i in command:
             else:
                 compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
 
-    if(found == True and i.element["tag"] == "form"):
+    elif(found == True and i.element["tag"] == "form"):
         i.element["tag"] = getArgument("name",args)["content"]
         compiled.write("#==form init " + i.element["tag"] + "==\n")
         compiled.write(i.element["tag"] + " = tk.Tk()\n")

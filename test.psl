@@ -7,4 +7,12 @@
     <frame2>
   </frame1>
   </form>
+  <form, name="window2", dimensions="500x500">
+  <frame1, name="frame3">
+    <frame2, name="frame4">
+      <a, name="hello1">Hello</a>
+      <a, name="hello2">Hell</a>
+    <frame2>
+  </frame1>
+  </form>
 </formspace>

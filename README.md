@@ -83,7 +83,7 @@ You have to add `name` attribute value for every element different like:
 
  ```name="example1"``` and ```name="example2"```
 
-Because if the names match for two or more elements you are not going to be able identifi them in scripts. You can read more about naming in [Naming problems](#naming-problems).
+Because if the names match for two or more elements you are not going to be able identifi them in scripts and even in other forms they would cause problems. You can read more about naming in [Naming problems](#naming-problems).
 
 ### Elements
 #### Frames
