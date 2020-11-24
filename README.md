@@ -16,7 +16,7 @@ When you are using HTML u would do this to make basic structure for your web pag
   </body>
 </html>
 ```
-## But in PSL it look like this:
+But in PSL it look like this:
 ```html
 <formspace,name="project">
   <form,name="window1",dimensions="500x500">
