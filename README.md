@@ -30,6 +30,9 @@ sometext.pack()
 window1.mainloop()
 #formspace end
 ```
+## Adding attribute to element
+
+Lets say we need to make add `name` attribute to element
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
