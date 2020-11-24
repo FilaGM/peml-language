@@ -1,4 +1,0 @@
-'tag', 'formspace'
-'args', ['name="project"']
-'content', [{'tag': 'form', 'args': ['name="window1"', 'dimensions="500x500"'], 'content': [{'tag': 'frame1', 'args': ['name="frame1"'], 'content': [{'tag': 'text', 'args': ['name="hello"'], 'content': [], 'selfString': '<text,name="hello">HelloWorld!</text>'}], 'selfString': '<frame1,name="frame1"><text,name="hello">HelloWorld!</text></frame1>'}], 'selfString': '<form,name="window1",dimensions="500x500"><frame1,name="frame1"><text,name="hello">HelloWorld!</text></frame1></form>'}])
-'selfString', '<formspace,name="project"><form,name="window1",dimensions="500x500"><frame1,name="frame1"><text,name="hello">HelloWorld!</text></frame1></form></formspace>'
