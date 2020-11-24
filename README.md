@@ -61,7 +61,7 @@ Now you only add the attribute value and you are done:
 The `,` is very important because of the way the compiler compiles the argument you can find more about the compiling process in the [compiling](#compiling) section.
 
 It doesn\`t matter if there is the space after the `,` because the compiler deletes it in the process of compiling
-You can read more about naming in [Spacing problems](#spacing-problems).
+You can read more about naming in [Spacing problems](#spacing).
 
 #### Every element can have currently this attributes:
 
@@ -181,7 +181,7 @@ It takes three steps to create the compiled file first we take original file:
 </formspace>
 ```
 And compile it to JSON style format:
-```Js
+```JSON
 'tag', 'formspace'
 'args', ['name="project"']
 'content', []
@@ -215,7 +215,17 @@ window1.mainloop()
 #formspace end
 ```
 ### Naming problems
-### Spacing problems
-
+### Spacing
+Spacing doesn`t cause any trouble because it is deleted by compiler first that means
+from this:
+```html
+<input     ,name =   "name"></input>
+```
+the compiler makes this:
+```html
+<input,name="name"></input>
+```
+And after that it gets compiled.
+So there cann\`t be used spaces in labels or names.
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
