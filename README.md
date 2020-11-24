@@ -7,9 +7,9 @@ The PSL language is in base similar to html but there are some differences.
 
 PSL basic structure looks like this:
 ```html
-<formspace,name="project">
-  <form,name="window1",dimensions="500x500">
-    <label,name="sometext">Some text</label>
+<formspace, name="project">
+  <form, name="window1",dimensions="500x500">
+    <label, name="sometext">Some text</label>
   </form>
 </formspace>
 ```
@@ -53,6 +53,8 @@ Now you only add the attribute value and you are done:
 <label, name="sometext">Hello World!</label>
 ```
 The `,` is very important because of the way the compiler compiles the argument you can find more about the compiling process in the [compiling](#compiling) section
+
+It doesn\`t matter if there is the space after the `,` because the compiler deletes it in the process of compiling
 
 ## Name attribute
 
