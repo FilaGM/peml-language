@@ -1,4 +1,3 @@
-
 import sys
 from compiler_lib import *
 import tkinter as tk
