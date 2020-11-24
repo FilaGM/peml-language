@@ -86,6 +86,10 @@ You have to add `name` attribute value for every element different like:
 Because if the names match for two or more elements you are not going to be able identifi them in scripts and even in other forms they would cause problems. You can read more about naming in [Naming problems](#naming-problems).
 
 ### Elements
+#### Global tags
+Global tags are set of tags creating different elements like for example `input` or `script`
+
+Global tags have to be always in lower case or they will not work!
 #### Frames
 There is no such thing as `div` or other frames like in HTML
 
@@ -103,38 +107,6 @@ Because every element that has other elements in it is considered frame (Not cou
 ```
 So all of these are going to work the same way.
 
-They are going to be compiled like this:
-```python
-import tkinter as tk
-#formspace project
-#==form init window1==
-window1 = tk.Tk()
-window1.geometry("500x500")
-window1.title("window1")
-#==form init window1==
-
-frame1 = tk.Frame(window1,width="100",height="100")
-frame1.pack()
-
-sometext1 = tk.Label(frame1,text="HelloWorld!")
-sometext1.pack()
-
-frame2 = tk.Frame(window1,width="100",height="100")
-frame2.pack()
-
-sometext2 = tk.Label(frame2,text="HelloWorld!")
-sometext2.pack()
-
-frame3 = tk.Frame(window1,width="100",height="100")
-frame3.pack()
-
-sometext3 = tk.Label(frame3,text="HelloWorld!")
-sometext3.pack()
-
-#<looping forms>
-window1.mainloop()
-#formspace end
-```
 `NEVER PLACE TWO SAME TAGED FRAMES IN EACH OTHER`
 It will result in crashing the compiler or getting stuck in middle of compiling.
 
@@ -163,6 +135,19 @@ You can do this:
 ```
 You can find why in the [compiling](#compiling) section.
 
+#### Labels
+Every element that doesn\`t have any other element inside it or doesn\`t correspond to any global tag is considered label
+```
+<label, name="hello">Hello World</label>
+<text, name="HELLO">Hello World</text>
+```
+These two elements are going to be the same in the form.
+#### Inputs
+To create input you have to use global tag `input` for example like this:
+```html
+<input, name="input1"></input>
+```
+No else tag will create input.
 ## Compiling
 ### Naming problems
 ### Spacing problems
