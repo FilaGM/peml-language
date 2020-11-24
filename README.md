@@ -32,7 +32,7 @@ window1.mainloop()
 ```
 #### Important things to follow in order to avoid some problems whit compilation:
 
-## Right attribute declaration
+## Add attribute to element
 
 In order to make a valid attribute for a element like `name` you need to follow those rules:
 
@@ -52,7 +52,7 @@ Now you only add the attribute value and you are done:
 ```html
 <label, name="sometext">Hello World!</label>
 ```
-The `,` is very important because of the way the compiler compiles the argument you can find more about the compiling process in the [compiling](https://github.com/FilaGM/psl-language#compiling) section
+The `,` is very important because of the way the compiler compiles the argument you can find more about the compiling process in the [compiling](#compiling) section
 
 It doesn\`t matter if there is the space after the `,` because the compiler deletes it in the process of compiling
 
@@ -61,6 +61,7 @@ It doesn\`t matter if there is the space after the `,` because the compiler dele
 You have to add `name` attribute for every element like name="example"
 because if the names mach for two or more elements you are not going to be able identifi them in scripts.
 
+## Compiling
 
 
 ## License
