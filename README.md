@@ -1,7 +1,7 @@
 # PythonStructuralLanguage
 Language for making python desktop apps.
 
-## Syntax
+## Introduction
 
 The PSL language is in base similar to html but there are some differences.
 
@@ -30,9 +30,9 @@ sometext.pack()
 window1.mainloop()
 #formspace end
 ```
-#### Important things to follow in order to avoid some problems whit compilation:
+## Syntax
 
-## Add attribute to element
+### Add attribute to element
 
 In order to make a valid attribute for a element like `name` you need to follow those rules:
 
@@ -56,9 +56,9 @@ The `,` is very important because of the way the compiler compiles the argument 
 
 It doesn\`t matter if there is the space after the `,` because the compiler deletes it in the process of compiling
 
-## Name attribute
+### Name attribute
 
-You have to add `name` attribute for every element like name="example"
+You have to add `name` attribute for every element like ```name="example"```
 because if the names mach for two or more elements you are not going to be able identifi them in scripts.
 
 ## Compiling
