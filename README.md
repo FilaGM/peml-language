@@ -147,7 +147,7 @@ To create input you have to use global tag `input` for example like this:
 ```html
 <input, name="input1"></input>
 ```
-No else tag will create input.
+No else tag will create text input.
 ## Compiling
 ### Naming problems
 ### Spacing problems
