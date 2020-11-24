@@ -1,5 +1,13 @@
 <formspace,name="project">
-  <form,name="window1",dimensions="500x500">
-    <label,name="sometext">Some text</label>
+  <form, name="window1", dimensions="500x500">
+    <div, name="frame1">
+    <label, name="sometext1">Hello World!</label>
+    </div>
+    <dwa, name="frame2">
+    <label, name="sometext2">Hello World!</label>
+    </dwa>
+    <whatever, name="frame3">
+    <label, name="sometext3">Hello World!</label>
+    </whatever>
   </form>
 </formspace>

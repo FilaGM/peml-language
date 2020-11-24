@@ -28,7 +28,13 @@ for i in command:
         height = "100"
         if(argumentExists("width",args)):
             width = getArgument("width", args)["content"]
-        compiled.write(i.element["tag"] + " = tk.Frame("+i.parrent["tag"]+",width=\""+width+"\",height=\""+height+"\")\n")
+        if(argumentExists("height",args)):
+            width = getArgument("height", args)["content"]
+        compiled.write(getArgument("name", args)["content"] + " = tk.Frame("+i.parrent["tag"]+",width=\""+width+"\",height=\""+height+"\")\n")
+        if(argumentExists("x", args) and argumentExists("y", args)):
+            compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
+        else:
+            compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
     if(found == False):
         if(i.element["tag"] == "script"):
             if(argumentExists("path", args)):
@@ -49,7 +55,7 @@ for i in command:
             else:
                 compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
         else:
-            compiled.write(getArgument("name", args)["content"] + " = tk.Label(" + i.parrent["tag"] + ",text=\"" + getInnerText(i.element) + "\")\n")
+            compiled.write(getArgument("name", args)["content"] + " = tk.Label(" + getArgument("name", i.parrent["args"])["content"] + ",text=\"" + getInnerText(i.element) + "\")\n")
             if(argumentExists("x", args) and argumentExists("y", args)):
                 compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
             else:
