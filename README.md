@@ -13,6 +13,12 @@ PSL basic structure looks like this:
   </form>
 </formspace>
 ```
+You can see that we have two main parts the `<formspace>` and the `<form>`
+
+The `<formspace>` is place where all the forms. That means that we can initialized how many forms we want.
+
+The `<from>` is how we initialize a form (window), there always has to be at least one element in the form. You can find why in the [compiling](#compiling) section.
+
 The compiler compiles it to this script that is executable via python:
 ```python
 import tkinter as tk
@@ -32,7 +38,7 @@ window1.mainloop()
 ```
 ## Syntax
 
-### Add attribute to element
+### Attributes
 
 In order to make a valid attribute for a element like `name` you need to follow those rules:
 
@@ -55,8 +61,9 @@ Now you only add the attribute value and you are done:
 The `,` is very important because of the way the compiler compiles the argument you can find more about the compiling process in the [compiling](#compiling) section.
 
 It doesn\`t matter if there is the space after the `,` because the compiler deletes it in the process of compiling
+You can read more about naming in [Spacing problems](#spacing-problems).
 
-### Name attribute
+### Attribute -> `Name`
 
 This attribute has to be in every element or you are going to run in problems.
 You can read more about naming in [Naming problems](#naming-problems).
@@ -66,6 +73,7 @@ because if the names mach for two or more elements you are not going to be able 
 
 ## Compiling
 ### Naming problems
+### Spacing problems
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
