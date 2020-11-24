@@ -135,8 +135,33 @@ sometext3.pack()
 window1.mainloop()
 #formspace end
 ```
+`NEVER PLACE TWO SAME TAGED FRAMES IN EACH OTHER`
+It will result in crashing the compiler or getting stuck in middle of compiling.
 
-
+Do not do this:
+```html
+<frame, name="frame1">
+  <frame, name="frame2">
+  </frame>
+</frame>
+```
+do not do this either:
+```html
+<frame1, name="frame1">
+  <frame2, name="frame2">
+    <frame1, name="frame3">
+    </frame1>
+  <frame2>
+</frame1>
+```
+You can do this:
+```html
+<frame1, name="frame1">
+  <frame2, name="frame2">
+  <frame2>
+</frame1>
+```
+You can find why in the [compiling](#compiling) section.
 
 ## Compiling
 ### Naming problems

@@ -81,7 +81,12 @@ def compileToCommand(object):
     def compile(object):
         if(object["content"] != []):
             for a in object["content"]:
-                compiledArray.append(CommandElement(object,a))
+                found = False
+                for b in compiledArray:
+                    if(b.element == CommandElement(object,a).element):
+                        found = True
+                if(found == False):
+                    compiledArray.append(CommandElement(object,a))
                 compile(a)
     compile(object)
     return compiledArray

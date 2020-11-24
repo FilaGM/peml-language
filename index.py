@@ -9,20 +9,14 @@ window1.title("window1")
 frame1 = tk.Frame(window1,width="100",height="100")
 frame1.pack()
 
-sometext1 = tk.Label(frame1,text="HelloWorld!")
-sometext1.pack()
-
-frame2 = tk.Frame(window1,width="100",height="100")
+frame2 = tk.Frame(frame1,width="100",height="100")
 frame2.pack()
 
-sometext2 = tk.Label(frame2,text="HelloWorld!")
-sometext2.pack()
+hello = tk.Label(frame2,text="Hello")
+hello.pack()
 
-frame3 = tk.Frame(window1,width="100",height="100")
-frame3.pack()
-
-sometext3 = tk.Label(frame3,text="HelloWorld!")
-sometext3.pack()
+hello = tk.Label(frame2,text="Hell")
+hello.pack()
 
 #<looping forms>
 window1.mainloop()

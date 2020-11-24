@@ -36,6 +36,7 @@ for i in command:
         else:
             compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
     if(found == False):
+        #script
         if(i.element["tag"] == "script"):
             if(argumentExists("path", args)):
                 if not (os.path.exists(getArgument("path", args)["content"])):
@@ -48,12 +49,14 @@ for i in command:
                 compiled.write("#~script " + getArgument("name", args)["content"] + "~ START\n")
                 compiled.write(getInnerText(i.element) + "\n")
                 compiled.write("#~script " + getArgument("name", args)["content"] + "~ END\n\n")
+        #input
         elif(i.element["tag"] == "input"):
             compiled.write(getArgument("name", args)["content"] + " = tk.Entry(" + i.parrent["tag"] + ")\n")
             if(argumentExists("x", args) and argumentExists("y", args)):
                 compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
             else:
                 compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
+        #label
         else:
             compiled.write(getArgument("name", args)["content"] + " = tk.Label(" + getArgument("name", i.parrent["args"])["content"] + ",text=\"" + getInnerText(i.element) + "\")\n")
             if(argumentExists("x", args) and argumentExists("y", args)):
