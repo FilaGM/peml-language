@@ -41,3 +41,6 @@ sometext.pack()
 window1.mainloop()
 #formspace end
 ```
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
