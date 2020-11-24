@@ -1,3 +1,4 @@
+
 import sys
 from compiler_lib import *
 import tkinter as tk
@@ -10,7 +11,7 @@ compiledFile = compileToElement(file)
 
 command = compileToCommand(compiledFile)
 
-compiled = open("index.py","w")
+compiled = open(sys.argv[2],"w")
 compiled.write("import tkinter as tk\n")
 for arg in compiledFile["args"]:
     if(getArgumentFromString(arg)["name"] == "name"):
@@ -42,6 +43,12 @@ for i in command:
                 compiled.write("#~script " + getArgument("name", args)["content"] + "~ START\n")
                 compiled.write(getInnerText(i.element) + "\n")
                 compiled.write("#~script " + getArgument("name", args)["content"] + "~ END\n\n")
+        elif(i.element["tag"] == "input"):
+            compiled.write(getArgument("name", args)["content"] + " = tk.Entry(" + i.parrent["tag"] + ")\n")
+            if(argumentExists("x", args) and argumentExists("y", args)):
+                compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
+            else:
+                compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
         else:
             compiled.write(getArgument("name", args)["content"] + " = tk.Label(" + i.parrent["tag"] + ",text=\"" + getInnerText(i.element) + "\")\n")
             if(argumentExists("x", args) and argumentExists("y", args)):
@@ -51,7 +58,7 @@ for i in command:
 
     if(found == True and i.element["tag"] == "form"):
         i.element["tag"] = getArgument("name",args)["content"]
-        compiled.write("#==formspace " + i.element["tag"] + "==\n")
+        compiled.write("#==form init " + i.element["tag"] + "==\n")
         compiled.write(i.element["tag"] + " = tk.Tk()\n")
         if(argumentExists("dimensions",args)):
             compiled.write(i.element["tag"] + ".geometry(\"" + getArgument("dimensions",args)["content"] + "\")\n")
@@ -60,6 +67,7 @@ for i in command:
         else:
             compiled.write(i.element["tag"] + ".title(\""+i.element["tag"]+"\")\n")
         formTags.append(i.element["tag"])
+        compiled.write("#==form init " + i.element["tag"] + "==\n\n")
 
 compiled.write("#<looping forms>\n")
 for i in formTags:

@@ -107,11 +107,18 @@ def getArgument(argument,args):
         if(arg["name"] == argument):
             ret = arg
     return ret
+
 def argumentExists(argument,args):
     if(getArgument(argument,args)["name"] == "null"):
         return False
     else:
         return True
+
+def argumentsToString(args):
+    string = ""
+    for arg in args:
+        string += "," + arg["name"] + "=" + "\"" + arg["content"] + "\""
+    return string
 
 def getInnerText(element):
     elementString = element["selfString"]
