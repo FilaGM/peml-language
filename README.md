@@ -68,7 +68,10 @@ You can read more about naming in [Spacing problems](#spacing-problems).
 This attribute has to be in every element or you are going to run in problems.
 You can read more about naming in [Naming problems](#naming-problems).
 
-You have to add `name` attribute for every element like ```name="example"```
+You have to add `name` attribute for every element different like:
+
+ ```name="example1"``` and ```name="example2"```
+
 because if the names mach for two or more elements you are not going to be able identifi them in scripts.
 
 ## Compiling
