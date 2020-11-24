@@ -54,8 +54,6 @@ Now you only add the attribute value and you are done:
 ```
 The `,` is very important because of the way the compiler compiles the argument you can find more about the compiling process in the [compiling](#compiling) section
 
-It doesn\`t matter if there is the space after the `,` because the compiler deletes it in the process of compiling
-
 ## Name attribute
 
 You have to add `name` attribute for every element like name="example"
