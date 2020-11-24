@@ -17,7 +17,7 @@ When you are using html u would do this to make basic structure for your web pag
 </html>
 ```
 But in PSL it look like this:
-```
+```html
 <formspace>
   <form,name="window1",dimensions="500x500">
   </form>
