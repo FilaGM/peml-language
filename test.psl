@@ -1,7 +1,5 @@
 <formspace,name="project">
-  <form,name="window1",dimensions="500x500",title="Window">
-    <label,name="Title",x="0",y="0">Title</label>
-    <input,name="Input1"></input>
-    <script,name="source",path="script-test/script.py"></script>
+  <form,name="window1",dimensions="500x500">
+    <label,name="sometext">Some text</label>
   </form>
 </formspace>
