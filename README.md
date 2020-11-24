@@ -15,7 +15,7 @@ PSL basic structure looks like this:
 ```
 You can see that we have two main parts the `<formspace>` and the `<form>`
 
-The `<formspace>` is place where all the forms. That means that we can initialized how many forms we want.
+The `<formspace>` is place where all the forms are. That means that we can initialized how many forms we want.
 
 The `<form>` is how we initialize a form (window), there always has to be at least one element in the form. You can find why in the [compiling](#compiling) section.
 
