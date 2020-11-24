@@ -16,3 +16,10 @@ When you are using html u would do this to make basic structure for your web pag
   </body>
 </html>
 ```
+But in PSL it look like this:
+```
+<formspace>
+  <form,name="window1",dimensions="500x500">
+  </form>
+</formspace>
+```
