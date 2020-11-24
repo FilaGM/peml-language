@@ -59,7 +59,7 @@ It doesn\`t matter if there is the space after the `,` because the compiler dele
 ### Name attribute
 
 This attribute has to be in every element or you are going to run in problems.
-You can read more about naming in [naming](#naming problems).
+You can read more about naming in [Naming](#naming problems).
 
 You have to add `name` attribute for every element like ```name="example"```
 because if the names mach for two or more elements you are not going to be able identifi them in scripts.
