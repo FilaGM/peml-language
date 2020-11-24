@@ -149,6 +149,71 @@ To create input you have to use global tag `input` for example like this:
 ```
 No else tag will create text input.
 ## Compiling
+### Compile your script
+In order to run the PSL script you need to use run this command in command prompt:
+```bash
+run %You script name%
+```
+To run the test file you can use this:
+```bash
+run test.psl
+```
+But you can run this only in the compiler directory.
+
+If you want to compile scrits from other directory you need to run this still in the compiler folder:
+
+```bash
+py compiler.py %You script name or full path% %Output script name or full path%
+```
+So for the test file it is:
+``` bash
+py compiler.py test.psl index.py
+```
+or:
+py compiler.py %PATH%/test.psl %PATH%/index.py
+### How does the compiler work?
+It takes three steps to create the compiled file first we take original file:
+```html
+<formspace, name="project">
+  <form, name="window1",dimensions="500x500">
+    <label, name="sometext">Some text</label>
+  </form>
+</formspace>
+```
+And compile it to JSON style format:
+```JSON
+'tag', 'formspace'
+'args', ['name="project"']
+'content', []
+```
+The content should have all the elements of formspace in it but it wont fit into here so im not going to place it there.
+
+After this finishes the compiler takes it and converts it to `ParrentChild` that means something like this:
+```
+formspace -> window1
+window1 -> frame1
+frame1 -> text
+```
+From that we can finally make the fully compiled code:
+```python
+import tkinter as tk
+#formspace project
+#==form init window1==
+window1 = tk.Tk()
+window1.geometry("500x500")
+window1.title("window1")
+#==form init window1==
+
+frame1 = tk.Frame(window1,width="100",height="100")
+frame1.pack()
+
+hello = tk.Label(frame1,text="HelloWorld!")
+hello.pack()
+
+#<looping forms>
+window1.mainloop()
+#formspace end
+```
 ### Naming problems
 ### Spacing problems
 

@@ -1,18 +1,7 @@
 <formspace,name="project">
   <form, name="window1", dimensions="500x500">
   <frame1, name="frame1">
-    <frame2, name="frame2">
-      <a, name="hello">Hello</a>
-      <a, name="hello">Hell</a>
-    <frame2>
-  </frame1>
-  </form>
-  <form, name="window2", dimensions="500x500">
-  <frame1, name="frame3">
-    <frame2, name="frame4">
-      <a, name="hello1">Hello</a>
-      <a, name="hello2">Hell</a>
-    <frame2>
+    <text, name="hello">Hello World!</text>
   </frame1>
   </form>
 </formspace>
