@@ -24,7 +24,7 @@ But in PSL it look like this:
   </form>
 </formspace>
 ```
-The compiler makes compiles it to this:
+The compiler compiles it to this script that is executable via python:
 ```python
 import tkinter as tk
 #formspace project
