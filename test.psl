@@ -2,7 +2,6 @@
   <form,name="window1",dimensions="500x500",title="Window">
     <label,name="Title">Title</label>
     <script,name="source",path="script-test/script.py"></script>
-    <script,name="source2">print("hello")</script>
     <label,name="Title">Hello</label>
   </form>
 </formspace>
