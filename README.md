@@ -20,6 +20,7 @@ But in PSL it look like this:
 ```html
 <formspace>
   <form,name="window1",dimensions="500x500">
+    <label,name="sometext">Some text</label>
   </form>
 </formspace>
 ```
