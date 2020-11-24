@@ -31,18 +31,23 @@ for i in command:
         compiled.write(i.element["tag"] + " = tk.Frame("+i.parrent["tag"]+",width=\""+width+"\",height=\""+height+"\")\n")
     if(found == False):
         if(i.element["tag"] == "script"):
-            compiled.write("#~script " + getArgument("name", args)["content"] + "~ START\n")
             if(argumentExists("path", args)):
-                selfDir = os.getcwd()
-                if(os.path.exists(getArgument("path", args)["content"])):
+                if not (os.path.exists(getArgument("path", args)["content"])):
+                    compiled.write("#Failed to load the script. File dirrectory is not valid.\n")
+                else:
+                    compiled.write("#~script " + getArgument("name", args)["content"] + "~ START\n")
                     compiled.write(open(getArgument("path", args)["content"],"r").read())
-            compiled.write("#~script " + getArgument("name", args)["content"] + "~ END\n")
+                    compiled.write("#~script " + getArgument("name", args)["content"] + "~ END\n\n")
+            else:
+                compiled.write("#~script " + getArgument("name", args)["content"] + "~ START\n")
+                compiled.write(getInnerText(i.element) + "\n")
+                compiled.write("#~script " + getArgument("name", args)["content"] + "~ END\n\n")
         else:
             compiled.write(getArgument("name", args)["content"] + " = tk.Label(" + i.parrent["tag"] + ",text=\"" + getInnerText(i.element) + "\")\n")
             if(argumentExists("x", args) and argumentExists("y", args)):
-                compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n")
+                compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
             else:
-                compiled.write(getArgument("name", args)["content"] + ".pack()\n")
+                compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
 
     if(found == True and i.element["tag"] == "form"):
         i.element["tag"] = getArgument("name",args)["content"]
