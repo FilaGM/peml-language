@@ -17,7 +17,7 @@ You can see that we have two main parts the `<formspace>` and the `<form>`
 
 The `<formspace>` is place where all the forms. That means that we can initialized how many forms we want.
 
-The `<from>` is how we initialize a form (window), there always has to be at least one element in the form. You can find why in the [compiling](#compiling) section.
+The `<form>` is how we initialize a form (window), there always has to be at least one element in the form. You can find why in the [compiling](#compiling) section.
 
 The compiler compiles it to this script that is executable via python:
 ```python
@@ -66,13 +66,12 @@ You can read more about naming in [Spacing problems](#spacing-problems).
 ### Attribute -> `Name`
 
 This attribute has to be in every element or you are going to run in problems.
-You can read more about naming in [Naming problems](#naming-problems).
 
 You have to add `name` attribute for every element different like:
 
  ```name="example1"``` and ```name="example2"```
 
-because if the names mach for two or more elements you are not going to be able identifi them in scripts.
+because if the names mach for two or more elements you are not going to be able identifi them in scripts.You can read more about naming in [Naming problems](#naming-problems).
 
 ## Compiling
 ### Naming problems
