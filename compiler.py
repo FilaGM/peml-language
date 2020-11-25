@@ -2,13 +2,15 @@ import sys
 from recources.compiler_lib import *
 import tkinter as tk
 import os
-file = open(sys.argv[1],"r")
 
+file = open(sys.argv[1],"r")
+print("Started compiling file: "+sys.argv[1])
 file = file.read()
 
 compiledFile = compileToElement(file)
 
 command = compileToCommand(compiledFile)
+print("Number of steps: "+ str(len(command)))
 
 compiled = open(sys.argv[2],"w")
 compiled.write("import tkinter as tk\n")
@@ -17,6 +19,7 @@ for arg in compiledFile["args"]:
         compiled.write("#formspace "+getArgumentFromString(arg)["content"] + "\n")
 
 formTags = []
+steps = 1
 for i in command:
     found = False
     args = i.element["args"]
@@ -24,7 +27,6 @@ for i in command:
         if(i.element["tag"] == a.parrent["tag"]):
             found = True
 
-    print(i.parrent["tag"]," -> ",i.element["tag"],"|",found)
     if(found == True and i.element["tag"] != "form"):
         width = "100"
         height = "100"
@@ -86,7 +88,7 @@ for i in command:
             compiled.write(i.element["tag"] + ".geometry(\"" + getArgument("dimensions",args)["content"] + "\")\n")
             compiled.write("mainFormCanvas_" + i.element["tag"] + " = tk.Canvas("+i.element["tag"]+",width="+getArgument("dimensions", args)["content"][getArgument("dimensions", args)["content"].find("x")+1:]+",height="+getArgument("dimensions", args)["content"][:getArgument("dimensions", args)["content"].find("x")]+")\n")
         else:
-            compiled.write("mainFormCanvas_" + i.element["tag"] + " = tk.Canvas("+i.element["tag"]+",width=100,height=100))\n")
+            compiled.write("mainFormCanvas_" + i.element["tag"] + " = tk.Canvas("+i.element["tag"]+",width=100,height=100)\n")
         if(argumentExists("backgroundColor",args)):
             backgroundColor = getArgument("backgroundColor", args)["content"]
         if(argumentExists("title",args)):
@@ -97,6 +99,10 @@ for i in command:
         formTags.append(i.element["tag"])
         compiled.write("#==form init " + i.element["tag"] + "==\n\n")
 
+    print(str(int((100 / len(command)) * steps)) + "%")
+    steps += 1
+
+print("done")
 compiled.write("#<looping forms>\n")
 for i in formTags:
     compiled.write(i + ".mainloop()\n")
