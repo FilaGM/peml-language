@@ -1,11 +1,11 @@
-# PythonHyperTextMarkupLanguage
+# PythonHyperTextFormMarkupLanguage
 Language for making python desktop apps.
 
 ## Introduction
 
-The PHTML language is in base similar to html but there are some differences.
+The PHTFML language is in base similar to html but there are some differences.
 
-PHTML basic structure looks like this:
+PHTFML basic structure looks like this:
 ```html
 <formspace, name="project">
   <form, name="window1",dimensions="500x500">
