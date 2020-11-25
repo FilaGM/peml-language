@@ -28,11 +28,14 @@ for i in command:
     if(found == True and i.element["tag"] != "form"):
         width = "100"
         height = "100"
+        backgroundColor = "white"
         if(argumentExists("width",args)):
             width = getArgument("width", args)["content"]
         if(argumentExists("height",args)):
-            width = getArgument("height", args)["content"]
-        compiled.write(getArgument("name", args)["content"] + " = tk.Frame("+i.parrent["tag"]+",width=\""+width+"\",height=\""+height+"\")\n")
+            height = getArgument("height", args)["content"]
+        if(argumentExists("backgroundColor",args)):
+            backgroundColor = getArgument("backgroundColor", args)["content"]
+        compiled.write(getArgument("name", args)["content"] + " = tk.Frame("+i.parrent["tag"]+",width="+width+",height="+height+",fg=\""+backgroundColor+"\", borderwidth=2)\n")
         if(argumentExists("x", args) and argumentExists("y", args)):
             compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
         else:
@@ -72,6 +75,8 @@ for i in command:
         compiled.write(i.element["tag"] + " = tk.Tk()\n")
         if(argumentExists("dimensions",args)):
             compiled.write(i.element["tag"] + ".geometry(\"" + getArgument("dimensions",args)["content"] + "\")\n")
+        if(argumentExists("backgroundColor",args)):
+            backgroundColor = getArgument("backgroundColor", args)["content"]
         if(argumentExists("title",args)):
             compiled.write(i.element["tag"] + ".title(\""+getArgument("title",args)["content"]+"\")\n")
         else:

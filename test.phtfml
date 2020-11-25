@@ -1,5 +1,7 @@
 <formspace, name="project">
   <form, name="window1",dimensions="500x500">
-    <label, name="sometext">Some text</label>
+    <frame,backgroundColor="red",name="hello",x="0",y="0",width="200",height="200">
+      <label, name="sometext">Some text</label>
+    </frame>
   </form>
 </formspace>
