@@ -1,5 +1,6 @@
 import sys
 from recources.compiler_lib import *
+from recources.compile_elements_lib import testForElements
 import tkinter as tk
 import os
 
@@ -39,54 +40,17 @@ for i in command:
             compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
         else:
             compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
+        i.element["tag"] = getArgument("name", args)["content"]
     elif(found == False):
-        #script
-        if(i.element["tag"] == "script"):
-            if(argumentExists("path", args)):
-                if not (os.path.exists(getArgument("path", args)["content"])):
-                    compiled.write("#Failed to load the script. File dirrectory is not valid.\n")
-                else:
-                    compiled.write("#~script " + getArgument("name", args)["content"] + "~ START\n")
-                    compiled.write(open(getArgument("path", args)["content"],"r").read())
-                    compiled.write("#~script " + getArgument("name", args)["content"] + "~ END\n\n")
-            else:
-                compiled.write("#~script " + getArgument("name", args)["content"] + "~ START\n")
-                compiled.write(getInnerText(i.element) + "\n")
-                compiled.write("#~script " + getArgument("name", args)["content"] + "~ END\n\n")
-        #input
-        elif(i.element["tag"] == "input"):
-            compiled.write(getArgument("name", args)["content"] + " = tk.Entry(" + i.parrent["tag"] + ")\n")
-            if(argumentExists("x", args) and argumentExists("y", args)):
-                compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
-            else:
-                compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
-        elif(i.element["tag"] == "canvas"):
-            width = "100"
-            height = "100"
-            if(argumentExists("width",args)):
-                width = getArgument("width", args)["content"]
-            if(argumentExists("height",args)):
-                height = getArgument("height", args)["content"]
-            compiled.write(getArgument("name", args)["content"] + " = tk.Canvas(" + getArgument("name",i.parrent["args"])["content"] + ",width="+width+", height="+height+")\n")
-            if(argumentExists("x", args) and argumentExists("y", args)):
-                compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
-            else:
-                compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
-        #label
-        else:
-            compiled.write(getArgument("name", args)["content"] + " = tk.Label(" + getArgument("name", i.parrent["args"])["content"] + ",text=\"" + getInnerText(i.element) + "\")\n")
-            if(argumentExists("x", args) and argumentExists("y", args)):
-                compiled.write(getArgument("name", args)["content"] + ".place(x=\"" + getArgument("x", args)["content"] + "\",y=\"" + getArgument("y", args)["content"] + "\")\n\n")
-            else:
-                compiled.write(getArgument("name", args)["content"] + ".pack()\n\n")
+        compiled.write(testForElements(i))
 
     elif(found == True and i.element["tag"] == "form"):
         i.element["tag"] = getArgument("name",args)["content"]
         compiled.write("#==form init " + i.element["tag"] + "==\n")
         compiled.write(i.element["tag"] + " = tk.Tk()\n")
         if(argumentExists("dimensions",args)):
-            compiled.write(i.element["tag"] + ".geometry(\"" + getArgument("dimensions",args)["content"] + "\")\n")
-            compiled.write("mainFormCanvas_" + i.element["tag"] + " = tk.Canvas("+i.element["tag"]+",width="+getArgument("dimensions", args)["content"][getArgument("dimensions", args)["content"].find("x")+1:]+",height="+getArgument("dimensions", args)["content"][:getArgument("dimensions", args)["content"].find("x")]+")\n")
+            compiled.write(i.element["tag"] + ".geometry(\"" + deleteFromStringAll(getArgument("dimensions",args)["content"],"\"") + "\")\n")
+            compiled.write("mainFormCanvas_" + i.element["tag"] + " = tk.Canvas("+i.element["tag"]+",width="+deleteFromStringAll(getArgument("dimensions", args)["content"][getArgument("dimensions", args)["content"].find("x")+1:],"\"")+",height="+deleteFromStringAll(getArgument("dimensions", args)["content"][:getArgument("dimensions", args)["content"].find("x")],"\"")+")\n")
         else:
             compiled.write("mainFormCanvas_" + i.element["tag"] + " = tk.Canvas("+i.element["tag"]+",width=100,height=100)\n")
         if(argumentExists("backgroundColor",args)):

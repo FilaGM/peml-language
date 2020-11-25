@@ -95,11 +95,12 @@ def getArgumentFromString(str):
     str = deleteFromStringAll(str," ")
     argName = str[:str.find("=")]
     argContent = str[str.find("=") + 1:]
-    argContent = deleteFromStringAll(argContent, "\"")
     object = {
         "name":argName,
         "content":argContent
     }
+    if(object["name"] == "name"):
+        object["content"] = deleteFromStringAll(object["content"], "\"")
     return object
 def getArgument(argument,args):
     found = False
