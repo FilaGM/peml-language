@@ -1,11 +1,11 @@
-# PythonStructuralLanguage
+# PythonHyperTextMarkupLanguage
 Language for making python desktop apps.
 
 ## Introduction
 
-The PSL language is in base similar to html but there are some differences.
+The PHTML language is in base similar to html but there are some differences.
 
-PSL basic structure looks like this:
+PHTML basic structure looks like this:
 ```html
 <formspace, name="project">
   <form, name="window1",dimensions="500x500">
