@@ -183,7 +183,7 @@ It takes three steps to create the compiled file first we take original file:
 </formspace>
 ```
 And compile it to JSON style format:
-```JSON
+```
 'tag', 'formspace'
 'args', ['name="project"']
 'content', []
