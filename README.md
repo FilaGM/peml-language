@@ -170,7 +170,9 @@ So for the test file it is:
 py compiler.py test.psl index.py
 ```
 or:
+```html
 py compiler.py %PATH%/test.psl %PATH%/index.py
+```
 ### How does the compiler work?
 It takes three steps to create the compiled file first we take original file:
 ```html
