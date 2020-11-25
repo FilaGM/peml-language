@@ -156,7 +156,7 @@ run %You script name%
 ```
 To run the test file you can use this:
 ```bash
-run test.psl
+run test.phtfml
 ```
 But you can run this only in the compiler directory.
 
@@ -167,11 +167,11 @@ py compiler.py %You script name or full path% %Output script name or full path%
 ```
 So for the test file it is:
 ``` bash
-py compiler.py test.psl index.py
+py compiler.py test.phtfml index.py
 ```
 or:
 ```html
-py compiler.py %PATH%/test.psl %PATH%/index.py
+py compiler.py %PATH%/test.phtfml %PATH%/index.py
 ```
 ### How does the compiler work?
 It takes three steps to create the compiled file first we take original file:
