@@ -15,6 +15,8 @@ print("Number of steps: "+ str(len(command)))
 
 compiled = open(sys.argv[2],"w")
 compiled.write("import tkinter as tk\n")
+compiled.write("#included lib\n")
+compiled.write(open("phtfmlIncluded.py").read() + "\n\n")
 for arg in compiledFile["args"]:
     if(getArgumentFromString(arg)["name"] == "name"):
         compiled.write("#formspace "+getArgumentFromString(arg)["content"] + "\n")
@@ -59,6 +61,10 @@ for i in command:
             compiled.write(i.element["tag"] + ".title(\""+getArgument("title",args)["content"]+"\")\n")
         else:
             compiled.write(i.element["tag"] + ".title(\""+i.element["tag"]+"\")\n")
+        if(argumentExists("fullscreen",args)):
+            compiled.write(i.element["tag"] + ".attributes('-fullscreen',\""+getArgument("fullscreen",args)["content"]+"\")\n")
+        else:
+            pass
         compiled.write("mainFormCanvas_" + i.element["tag"] + ".place(x=0,y=0)\n")
         formTags.append(i.element["tag"])
         compiled.write("#==form init " + i.element["tag"] + "==\n\n")
